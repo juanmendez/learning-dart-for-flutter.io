@@ -1,3 +1,22 @@
-## Learning Dart  
+# learning_dart
 
-Four years ago I was learning this language expecting to use it for Angular. Now I want to learn it again, and take this knowledge for a new ride in Flutter.io
+A library for Dart developers.
+
+Created from templates made available by Stagehand under a BSD-style
+[license](https://github.com/dart-lang/stagehand/blob/master/LICENSE).
+
+## Usage
+
+A simple usage example:
+
+    import 'package:learning_dart/learning_dart.dart';
+
+    main() {
+      var awesome = new Awesome();
+    }
+
+## Features and bugs
+
+Please file feature requests and bugs at the [issue tracker][tracker].
+
+[tracker]: http://example.com/issues/replaceme
