@@ -1,5 +1,6 @@
 import "dart:math";
 
+//supports abstract classes
 abstract class Shape {
   num get area; //getter declaration
 
@@ -11,6 +12,7 @@ abstract class Shape {
   }
 }
 
+//like Kotlin and Typescript, you can declare several classes in a single file
 class Circle implements Shape {
   final num radius; //like Java, but not like Kotlin's val
   Circle(this.radius);
@@ -25,6 +27,7 @@ class Square implements Shape {
 }
 
 main() {
+  //ok, so Kotlin's val is final instead, no need for var
   final circle = new Circle(2);
   final square = new Square(2);
   print(circle.area);
