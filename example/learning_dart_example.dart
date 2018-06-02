@@ -1,31 +1,26 @@
-class Bicycle {
-  int mCadence;
-  int mSpeed;
-  int mGear;
+import "dart:math";
 
-  Bicycle(this.mCadence, this.mSpeed, this.mGear);
+class Rectangle {
+  //we can't use privates, everything is public?
+  int width;
+  int height;
+  Point origin;
+
+  //Java supports overloading with multiple constructors
+  //Similar to Kotlin, Dart can include default values through an object
+  Rectangle({this.origin = const Point(0, 0), this.width = 0, this.height = 0});
 
   @override
   String toString() {
-    //interpolation works like in Kotlin $variable ${object.variable}
-    return 'Bicycle{cadence: $mCadence, speed: $mSpeed, gear: $mGear}';
-  }
-
-  //like in Typescript with a fat arrow, not like lambda in Kotlin and Java
-  String showSpeed() => "this is our speed $mSpeed";
-
-  void applyBrake(int decrement) {
-    mSpeed -= decrement;
-  }
-
-  void speedUp(int increment) {
-    mSpeed += increment;
+    return "Rectangle{width: $width, height: $height, origin: ${origin.x} ${origin.y} }";
   }
 }
 
 main() {
-  //variable declaration like typescript or kotlin
-  var bicycle = new Bicycle(3, 3, 3);
-  print(bicycle);
-  print(bicycle.showSpeed());
+  //Like Java new is used. I wish it did more like Kotlin var rectangle = Rectangle()
+  //so now its one argument served as an object.
+  print(new Rectangle(origin: const Point(10, 20), width: 100, height: 200));
+  print(new Rectangle(origin: const Point(10, 10)));
+  print(new Rectangle(width: 200));
+  print(new Rectangle());
 }
