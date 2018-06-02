@@ -1,26 +1,37 @@
 import "dart:math";
 
-class Rectangle {
-  //we can't use privates, everything is public?
-  int width;
-  int height;
-  Point origin;
+abstract class Shape {
+  num get area; //getter declaration
 
-  //Java supports overloading with multiple constructors
-  //Similar to Kotlin, Dart can include default values through an object
-  Rectangle({this.origin = const Point(0, 0), this.width = 0, this.height = 0});
-
-  @override
-  String toString() {
-    return "Rectangle{width: $width, height: $height, origin: ${origin.x} ${origin.y} }";
+  //this is like a constructor which is based on a subtype instead
+  factory Shape(String type, int dimension) {
+    if (type == 'circle') return new Circle(dimension);
+    if (type == 'square') return new Square(dimension);
+    throw 'Can\'t create $type.';
   }
 }
 
+class Circle implements Shape {
+  final num radius; //like Java, but not like Kotlin's val
+  Circle(this.radius);
+  num get area => PI * pow(radius, 2);
+}
+
+class Square implements Shape {
+  //I like Kotlin's val over this
+  final num side;
+  Square(this.side);
+  num get area => pow(side, 2);
+}
+
 main() {
-  //Like Java new is used. I wish it did more like Kotlin var rectangle = Rectangle()
-  //so now its one argument served as an object.
-  print(new Rectangle(origin: const Point(10, 20), width: 100, height: 200));
-  print(new Rectangle(origin: const Point(10, 10)));
-  print(new Rectangle(width: 200));
-  print(new Rectangle());
+  final circle = new Circle(2);
+  final square = new Square(2);
+  print(circle.area);
+  print(square.area);
+
+  final circleShape = new Shape('circle',2);
+  final squareShape = new Shape('square',3);
+  print(circleShape.area);
+  print(squareShape.area);
 }
