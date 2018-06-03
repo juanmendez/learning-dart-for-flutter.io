@@ -5,7 +5,7 @@ class Band{
   String album;
   int year;
 
-  Band(this.name, this.album, this.year);
+  Band({this.name="", this.album="", this.year=0});
 
   @override
   String toString() {
@@ -28,7 +28,7 @@ main() {
                   .skip(1)
                   .map((String line){
                       var columns = line.split(",");
-                      return new Band( columns[0], columns[1], int.parse(columns[2]));
+                      return new Band( name:columns[0], album:columns[1], year:int.parse(columns[2]));
                   })
                   .toList();
       print(bands);
