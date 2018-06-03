@@ -3,38 +3,44 @@ import "dart:math";
 //supports abstract classes
 abstract class Shape {
   num get area; //getter declaration
+}
 
-  //this is like a constructor which is based on a subtype instead
-  factory Shape(String type, int dimension) {
-    if (type == 'circle') return new Circle(dimension);
-    if (type == 'square') return new Square(dimension);
-    throw 'Can\'t create $type.';
+abstract class Color {
+  num get color;
+}
+
+/**
+ * There are no interfaces; instead, there are abstract classes which can serve the same purpose.
+ * Since Dart supports multiple inheritance, then Shape and Color can be considered as interfaces
+ */
+class Circle implements Shape, Color {
+  final num mRadius; //like Java, but not like Kotlin's val
+  final num mColor;
+
+  Circle(this.mRadius, this.mColor);
+  num get area => PI * pow(mRadius, 2);
+
+  @override
+  num get color => mColor;
+
+  @override
+  String toString() {
+    return 'Circle{radius: $mRadius, color: $color, area: $area }';
   }
-}
 
-//like Kotlin and Typescript, you can declare several classes in a single file
-class Circle implements Shape {
-  final num radius; //like Java, but not like Kotlin's val
-  Circle(this.radius);
-  num get area => PI * pow(radius, 2);
-}
-
-class Square implements Shape {
-  //I like Kotlin's val over this
-  final num side;
-  Square(this.side);
-  num get area => pow(side, 2);
+  //kotlin: fun onMouseClick( (Shape)->Unit )
+  void onMouseClick(void f(Shape s)){
+    f(this);
+  }
 }
 
 main() {
   //ok, so Kotlin's val is final instead, no need for var
-  final circle = new Circle(2);
-  final square = new Square(2);
-  print(circle.area);
-  print(square.area);
+  final circle = new Circle(2, 0xFF3600 );
+  print(circle);
 
-  final circleShape = new Shape('circle',2);
-  final squareShape = new Shape('square',3);
-  print(circleShape.area);
-  print(squareShape.area);
+  //onMouseClick accepts a function, which we return one value
+  circle.onMouseClick((Shape s){
+    print("${s.toString()} is pressed");
+  });
 }
