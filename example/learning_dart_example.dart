@@ -28,7 +28,7 @@ class Circle implements Shape, Color {
     return 'Circle{radius: $mRadius, color: $color, area: $area }';
   }
 
-  //kotlin: fun onMouseClick( (Shape)->Unit )
+  //kotlin: fun onMouseClick( f:(Shape)->Unit )
   void onMouseClick(void f(Shape s)){
     f(this);
   }
