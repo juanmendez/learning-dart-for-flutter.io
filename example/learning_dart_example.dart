@@ -1,40 +1,36 @@
-import "dart:math";
+import "dart:io";
 
-//supports abstract classes
-abstract class Shape {
-  num get area; //getter declaration
+class Band{
+  String name;
+  String album;
+  int year;
 
-  //this is like a constructor which is based on a subtype instead
-  factory Shape(String type, int dimension) {
-    if (type == 'circle') return new Circle(dimension);
-    if (type == 'square') return new Square(dimension);
-    throw 'Can\'t create $type.';
+  Band(this.name, this.album, this.year);
+
+  @override
+  String toString() {
+    return 'Band{name: $name, album: $album, year: $year}';
   }
 }
 
-//like Kotlin and Typescript, you can declare several classes in a single file
-class Circle implements Shape {
-  final num radius; //like Java, but not like Kotlin's val
-  Circle(this.radius);
-  num get area => PI * pow(radius, 2);
-}
-
-class Square implements Shape {
-  //I like Kotlin's val over this
-  final num side;
-  Square(this.side);
-  num get area => pow(side, 2);
-}
-
+/**
+ * this short demo exposes the same functionality I once wrote in Kotlin.
+ * There are several striking similarities. Unfortunately, Dart's lambdas don't simplify themselves as much
+ * as the ones in Kotlin. The story of the Band class is quite the same.
+ */
 main() {
-  //ok, so Kotlin's val is final instead, no need for var
-  final circle = new Circle(2);
-  final square = new Square(2);
-  print(circle.area);
-  print(square.area);
+  //async... output is of type Future<List<String>>
+  var output = new File("./raw/RockBands.csv").readAsLines();
 
-  final circleShape = new Shape('circle',2);
-  final squareShape = new Shape('square',3);
-  print(circleShape.area);
-  print(squareShape.area);
+  output.then((List<String> lines){
+
+      var bands = lines
+                  .skip(1)
+                  .map((String line){
+                      var columns = line.split(",");
+                      return new Band( columns[0], columns[1], int.parse(columns[2]));
+                  })
+                  .toList();
+      print(bands);
+  });
 }
