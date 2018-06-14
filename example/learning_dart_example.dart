@@ -1,3 +1,4 @@
+import 'dart:async';
 import "dart:io";
 
 class Band{
@@ -18,19 +19,34 @@ class Band{
  * There are several striking similarities. Unfortunately, Dart's lambdas don't simplify themselves as much
  * as the ones in Kotlin. The story of the Band class is quite the same.
  */
-main() {
+Future<List<Band>> getBands([bool expectException = false]) {
   //async... output is of type Future<List<String>>
-  var output = new File("./raw/RockBands.csv").readAsLines();
 
-  output.then((List<String> lines){
+    var output = new File("./raw/RockBands.csv").readAsLines();
 
-      var bands = lines
-                  .skip(1)
-                  .map((String line){
-                      var columns = line.split(",");
-                      return new Band( name:columns[0], album:columns[1], year:int.parse(columns[2]));
-                  })
-                  .toList();
-      print(bands);
-  });
+    return output.then((List<String> lines){
+
+        if( expectException ){
+            throw new Exception("you got an exception");
+        }
+
+        return lines
+                .skip(1)
+                .map((String line){
+                    var columns = line.split(",");
+                    return new Band( name:columns[0], album:columns[1], year:int.parse(columns[2]));
+                }).toList();
+    });
+}
+
+String getGreeting(){
+    return "Hello";
+}
+
+void pingException(){
+    throw new Exception("This is not Kotlin nor Java!!");
+}
+
+void main(){
+
 }
