@@ -46,7 +46,3 @@ String getGreeting(){
 void pingException(){
     throw new Exception("This is not Kotlin nor Java!!");
 }
-
-void main(){
-
-}
