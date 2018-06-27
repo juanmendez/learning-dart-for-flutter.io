@@ -39,10 +39,6 @@ Future<List<Band>> getBands([bool expectException = false]) {
     });
 }
 
-String getGreeting(){
-    return "Hello";
-}
+void main(){
 
-void pingException(){
-    throw new Exception("This is not Kotlin nor Java!!");
 }

@@ -3,50 +3,26 @@ import '../example/learning_dart_example.dart';
 
 @Timeout(const Duration(seconds: 30))
 void main() {
-
-  int tests = 0;
-
-  //@Before here or inside group as well
-  setUp((){
-    tests++;
-  });
+  var artists = Map<String,List<String>>();
 
   group('A group of tests', () {
     setUp((){
         print("group.setUp()");
     });
 
-    //@Test `First Test`()
-    test('First Test', (){
-        expect(getGreeting(), equals("Hello"));
-        print("number of tests $tests");
-    });
-
     //@see https://www.dartlang.org/tutorials/language/futures
     //@Test `Check result`
     test("asynchronous call", () async {
       var bands = await getBands();
-      expect(bands.length, equals(15));
 
-      print("number of tests $tests");
+      bands.forEach((band){
+         if(artists[band.name] == null){
+             artists[band.name] = List<String>();
+         }
+         artists[band.name].add(band.album);
+      });
+
+      expect(artists["Bon Jovi"].length, equals(2));
     });
-  });
-
-  group("how to handle exceptions", (){
-
-    //ensure your errors are called within a lambda instead
-    test("expect an exception", (){
-        expect( ()=>pingException(), throwsException );
-        print("number of tests $tests");
-    });
-
-    test("deal with future's exception", () async{
-        expect( await ()=>getBands(true), throwsException );
-        print("number of tests $tests");
-    });
-  });
-
-  tearDown((){
-      print( "teardown()");
   });
 }
