@@ -1,28 +1,19 @@
 import 'package:test/test.dart';
 import '../example/learning_dart_example.dart';
 
-@Timeout(const Duration(seconds: 30))
 void main() {
-  var artists = Map<String,List<String>>();
 
-  group('A group of tests', () {
-    setUp((){
-        print("group.setUp()");
+
+  group('Function var', () {
+
+    test("passing a method as a param", () {
+       expect( greatestBand().name, equals("Led Zeppelin"));
+       expect( checkBandsName(bandF:greatestBand, bandName: "Led Zeppelin"), equals(true));
     });
 
-    //@see https://www.dartlang.org/tutorials/language/futures
-    //@Test `Check result`
-    test("asynchronous call", () async {
-      var bands = await getBands();
-
-      bands.forEach((band){
-         if(artists[band.name] == null){
-             artists[band.name] = List<String>();
-         }
-         artists[band.name].add(band.album);
-      });
-
-      expect(artists["Bon Jovi"].length, equals(2));
+    test( "passing anonymous function", (){
+      var b = Band(name: "Deep Purple", album: "Led Zeppelin I", year: 1968);
+      expect( checkBandsName( bandF:()=>b, bandName: "Aerosmith"), equals(false));
     });
   });
 }

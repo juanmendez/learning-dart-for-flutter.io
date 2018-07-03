@@ -1,5 +1,4 @@
-import 'dart:async';
-import "dart:io";
+import 'dart:core';
 
 class Band{
   String name;
@@ -14,31 +13,7 @@ class Band{
   }
 }
 
-/**
- * this short demo exposes the same functionality I once wrote in Kotlin.
- * There are several striking similarities. Unfortunately, Dart's lambdas don't simplify themselves as much
- * as the ones in Kotlin. The story of the Band class is quite the same.
- */
-Future<List<Band>> getBands([bool expectException = false]) {
-  //async... output is of type Future<List<String>>
+Band greatestBand() => Band(name: "Led Zeppelin", album: "Led Zeppelin I", year: 1968);
 
-    var output = new File("./raw/RockBands.csv").readAsLines();
-
-    return output.then((List<String> lines){
-
-        if( expectException ){
-            throw new Exception("you got an exception");
-        }
-
-        return lines
-                .skip(1)
-                .map((String line){
-                    var columns = line.split(",");
-                    return new Band( name:columns[0], album:columns[1], year:int.parse(columns[2]));
-                }).toList();
-    });
-}
-
-void main(){
-
-}
+//pay attention how to pass a lambda,, in Kotlin we do bandF:()->String
+bool checkBandsName({Band bandF(), bandName:String}) => bandF().name == bandName;
