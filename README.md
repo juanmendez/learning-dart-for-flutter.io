@@ -1,22 +1,3 @@
 # learning_dart
 
-A library for Dart developers.
-
-Created from templates made available by Stagehand under a BSD-style
-[license](https://github.com/dart-lang/stagehand/blob/master/LICENSE).
-
-## Usage
-
-A simple usage example:
-
-    import 'package:learning_dart/learning_dart.dart';
-
-    main() {
-      var awesome = new Awesome();
-    }
-
-## Features and bugs
-
-Please file feature requests and bugs at the [issue tracker][tracker].
-
-[tracker]: http://example.com/issues/replaceme
+I find necessary to learn the language before Flutter. I guess I could just hack and pretend to write Dart with a Kotlin or Java mindset. Instead of cutting corners, I am taking a good amount of time to feel very confortable with Dart just like I feel now after [learning Kotlin](https://github.com/juanmendez/learning-kotlin). I break each learning subjects into different git branches. 
