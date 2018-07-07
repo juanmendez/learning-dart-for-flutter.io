@@ -30,4 +30,18 @@ void main() {
       expect(makeBandFromParams("Aerosmith").year, equals(2018));
     });
   });
+
+  group("lexical scope", () {
+    test("lexical scope", () {
+      topFunction();
+    });
+
+    test("lexical closures", (){
+      Band band = makeBandFromParams("Deep Purple", "Deep Purple", 1969);
+
+      //so band is kept inside expressBand closure. We can then just call the method return, and it knows the band!
+      Function expressFun = expressBand(band);
+      expect(expressFun("note:"), equals("note: ${band.name} made ${band.album} in ${band.year}"));
+    });
+  });
 }
