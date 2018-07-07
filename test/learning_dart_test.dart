@@ -18,9 +18,13 @@ void main() {
       //like Kotlin's with(), or apply
       Awesome superAwesome = Awesome()
       ..name = "Kotlin"
-      ..age = 6;
+      ..age = 6
+      ..why = Why()
+        ..why.reason = "cause it's so cool"
+        ..why.stars = 10;
 
       expect(superAwesome.age, equals(6));
+      expect(superAwesome.why.stars, equals(10));
     });
   });
 }

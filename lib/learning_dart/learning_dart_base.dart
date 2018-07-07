@@ -5,4 +5,10 @@ class Awesome {
   bool get isAwesome => true;
   String name;
   int age;
+  Why why;
+}
+
+class Why {
+  String reason;
+  int stars;
 }
