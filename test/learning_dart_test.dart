@@ -1,4 +1,4 @@
-import 'package:learning_dart/learning_dart.dart';
+import 'package:learning_dart/library.dart';
 import 'package:test/test.dart';
 
 void main() {
@@ -6,11 +6,21 @@ void main() {
     Awesome awesome;
 
     setUp(() {
-      awesome = new Awesome();
+      awesome = Awesome();
     });
 
-    test('First Test', () {
-      expect(awesome.isAwesome, isTrue);
+    test('operator tests', () {
+      assert(awesome is Awesome);
+      assert(awesome is! String);
+      assert(1.5 is! int);
+      expect(awesome.name ?? "", equals(""));
+
+      //like Kotlin's with(), or apply
+      Awesome superAwesome = Awesome()
+      ..name = "Kotlin"
+      ..age = 6;
+
+      expect(superAwesome.age, equals(6));
     });
   });
 }

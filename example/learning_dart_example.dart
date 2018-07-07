@@ -1,4 +1,4 @@
-import 'package:learning_dart/learning_dart.dart';
+import 'package:learning_dart/library.dart';
 
 main() {
   var awesome = new Awesome();
