@@ -33,10 +33,28 @@ void main() {
       superAwesome.name = null;
       expect(superAwesome.name?.length ?? 0, equals(0));
     });
+  });
 
+  group("class operators", (){
     test('alias constructor', (){
       Awesome creedBratton = Awesome.coolBeans("Creed Bratton", 65);
       expect(creedBratton.age, equals(65));
     });
+
+    test("method operator", (){
+        Cat felipe = Cat("Felipe", "Black and White");
+        Cat princess = Cat("Princess", "Black and White");
+        Cat amelia = Cat("Amelia", "Brown and Black");
+        List<Cat> familyCats = felipe + [princess];
+        expect(familyCats.length, equals(2));
+
+        familyCats = felipe - princess;
+        expect(familyCats.length, equals(1));
+
+        familyCats = felipe + [princess, amelia];
+        expect(familyCats.length, equals(3));
+
+    });
   });
+
 }

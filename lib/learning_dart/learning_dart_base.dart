@@ -30,3 +30,28 @@ class Why {
   String reason;
   int stars;
 }
+
+class Cat{
+    String name;
+    String color;
+
+    Cat(this.name, this.color);
+
+    static final _cats = List<Cat>();
+    List<Cat> operator +(List<Cat> otherCats){
+        _cats.clear();
+        _cats.add(this);
+        _cats.addAll(otherCats);
+        return _cats;
+    }
+
+    //this is a bit dumb, to substract one from another rather than the class
+    //this is just for testing functionality..
+    List<Cat> operator -(Cat cat){
+        if( _cats.contains(cat)){
+            _cats.remove(cat);
+        }
+
+        return _cats;
+    }
+}
