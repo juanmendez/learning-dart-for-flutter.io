@@ -1,2 +1,2 @@
 library learning_dart;
-export 'src/awesome.dart';
+export 'src/awesomecat.dart';
