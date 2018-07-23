@@ -54,4 +54,8 @@ class Cat{
 
         return _cats;
     }
+
+    String operator *(Cat cat){
+        return this.name + " " + cat.name;
+    }
 }

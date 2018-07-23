@@ -53,7 +53,7 @@ void main() {
 
         familyCats = felipe + [princess, amelia];
         expect(familyCats.length, equals(3));
-
+        expect( felipe * amelia, equals(felipe.name + " " + amelia.name));
     });
   });
 
