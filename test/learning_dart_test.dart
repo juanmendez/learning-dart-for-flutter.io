@@ -1,16 +1,21 @@
-import 'package:learning_dart/learning_dart.dart';
 import 'package:test/test.dart';
+import 'package:learning_dart/awesome_library.dart';
 
 void main() {
   group('A group of tests', () {
-    Awesome awesome;
+    AwesomeCat awesomeCat;
 
     setUp(() {
-      awesome = new Awesome();
+      awesomeCat = new AwesomeCat()
+        ..colorName = "Felipe"
+        ..sizeType = SizeType.medium
+        ..age = 8
+        ..weight = 11
+        ..colorName = "brown";
     });
 
     test('First Test', () {
-      expect(awesome.isAwesome, isTrue);
+      expect(awesomeCat.colorName, "brown");
     });
   });
 }

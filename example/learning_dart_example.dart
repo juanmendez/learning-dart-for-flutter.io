@@ -1,6 +1,1 @@
-import 'package:learning_dart/learning_dart.dart';
-
-main() {
-  var awesome = new Awesome();
-  print('awesome: ${awesome.isAwesome}');
-}
+import 'package:learning_dart/awesome_library.dart';
