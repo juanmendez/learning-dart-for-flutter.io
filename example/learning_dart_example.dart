@@ -13,10 +13,13 @@ class Band {
   }
 }
 
-Band greatestBand() =>
-    Band(name: "Led Zeppelin", album: "Led Zeppelin I", year: 1968);
+Band greatestBand() => Band(
+    name: "Led Zeppelin",
+    album: "Led Zeppelin I",
+    year: 1968
+);
 
-//pay attention how to pass a lambda,, in Kotlin we do bandF:()->String
+//pay attention how to pass a lambda,, in Kotlin we do bandF:()->Band
 bool checkBandsName({Band bandF(), bandName: String}) =>
     bandF().name == bandName;
 
