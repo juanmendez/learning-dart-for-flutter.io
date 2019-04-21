@@ -1,5 +1,8 @@
-# learning_dart
+# nullables
 
-I find necessary to learn the language before Flutter. I guess I could just hack and pretend to write Dart with a Kotlin or Java mindset. Instead of cutting corners, I am taking a good amount of time to feel very confortable with Dart just like I feel now after [learning Kotlin](https://github.com/juanmendez/learning-kotlin). I break each learning subject into a git branch. 
+Sadly Dart has no var?.let{} or var?.apply{} as Kotlin does. One thing that came from an article I read was using [Quiver](https://pub.dartlang.org/packages/quiver).  Which has `optional` features to protect whenever a variable has a null value. That `Dart` package was used in this demo.
 
-I just hope `Dart` allows to skip semincolons, coming from `Kotlin` is annoying. I can accept `Java`'s semicolons for its own legacy.
+- The good thing is `Dart` uses null safe references such as `person?.name="Paco"`. 
+- `Dart` uses `??` as the `Elvis` alternative used in Kotlin.
+
+I feel as if I were writing Java to some extend. At one point I wrote a lambda and didn't specify a return value just keeping in mind the value statement would do so automatically as it's the case of `Kotlin`. I went back and wrote `return` before the value. :)
