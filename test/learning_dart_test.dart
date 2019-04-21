@@ -1,21 +1,34 @@
 import 'package:test/test.dart';
-import 'package:learning_dart/awesome_library.dart';
+import 'package:quiver/core.dart';
 
 void main() {
-  group('A group of tests', () {
-    AwesomeCat awesomeCat;
+  test('First Test', () {
+    List<int> items = [0, 1, null, 3, 4, 5];
 
-    setUp(() {
-      awesomeCat = new AwesomeCat()
-        ..colorName = "Felipe"
-        ..sizeType = SizeType.medium
-        ..age = 8
-        ..weight = 11
-        ..colorName = "brown";
+    items.forEach((i){
+        print(i ?? "-1");
     });
 
-    test('First Test', () {
-      expect(awesomeCat.colorName, "brown");
+
+    items.forEach((i){
+      printInteger(i);
     });
+
+    var anyNull = items.any((i){
+      // return is a must, not like Kotlin which does automatically
+      return i == null;
+    });
+
+    assert(anyNull, "one value is null");
   });
+}
+
+void printInteger(int i) {
+  var option = Optional.fromNullable(i);
+
+  if(option.isNotPresent) {
+    print("not availabler");
+  } else {
+    print("available ${option.value}");
+  }
 }
