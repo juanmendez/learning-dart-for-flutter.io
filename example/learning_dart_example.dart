@@ -18,7 +18,7 @@ class Circle implements Shape, Color {
   final num mColor;
 
   Circle(this.mRadius, this.mColor);
-  num get area => PI * pow(mRadius, 2);
+  num get area => pi * pow(mRadius, 2);
 
   @override
   num get color => mColor;
