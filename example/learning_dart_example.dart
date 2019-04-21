@@ -40,5 +40,4 @@ Future<List<Band>> getBands([bool expectException = false]) {
 }
 
 void main(){
-
 }
