@@ -1,11 +1,16 @@
 import "dart:io";
 
-class Band{
+class Band {
   String name;
   String album;
   int year;
 
-  Band({this.name="", this.album="", this.year=0});
+  /**
+   * Kotlin way of constructors
+   * class Band(val name: String, val album: String, val year: Int)
+   * or constructor(val name: String, val album: String, val year: Int)
+   */
+  Band({this.name = "", this.album = "", this.year = 0});
 
   @override
   String toString() {
@@ -22,15 +27,20 @@ main() {
   //async... output is of type Future<List<String>>
   var output = new File("./raw/RockBands.csv").readAsLines();
 
-  output.then((List<String> lines){
+  /**
+   * Kotlin way of using a lambda
+   * { var1, var2 -> }
+   *
+   * Dart way of using a lambda
+   * (var1, var2) {}
+   */
+  output.then((List<String> lines) {
+    var bands = lines.skip(1).map((String line) {
+      var columns = line.split(",");
+      return new Band(
+          name: columns[0], album: columns[1], year: int.parse(columns[2]));
+    }).toList();
 
-      var bands = lines
-                  .skip(1)
-                  .map((String line){
-                      var columns = line.split(",");
-                      return new Band( name:columns[0], album:columns[1], year:int.parse(columns[2]));
-                  })
-                  .toList();
-      print(bands);
+    print(bands);
   });
 }
