@@ -1,34 +1,20 @@
 import 'package:test/test.dart';
-import 'package:quiver/core.dart';
+
+import '../main/animal_tree.dart';
 
 void main() {
-  test('First Test', () {
-    List<int> items = [0, 1, null, 3, 4, 5];
+  group("animal test", () {
+    test("test inheritance", () {
+      var printer = Printer();
 
-    items.forEach((i){
-        print(i ?? "-1");
-    });
+      Human paco = Human("Paco", 35);
+      assert(paco is Animal);
+      print(printer.print(paco));
+      print(feetToWalk(paco));
 
-
-    items.forEach((i){
-      printInteger(i);
-    });
-
-    var anyNull = items.any((i){
-      // return is a must, not like Kotlin which does automatically
-      return i == null;
-    });
-
-    assert(anyNull, "one value is null");
+      Cat felipe = Cat("Felipe", "mewwwwww");
+      print(printer.print(felipe));
+      print(feetToWalk(felipe));
+    }); // end of test
   });
-}
-
-void printInteger(int i) {
-  var option = Optional.fromNullable(i);
-
-  if(option.isNotPresent) {
-    print("not availabler");
-  } else {
-    print("available ${option.value}");
-  }
 }
