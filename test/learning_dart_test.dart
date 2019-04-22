@@ -35,4 +35,17 @@ void main() {
       print("error $error");
     }, onDone: ()=> print("done"));
   });
+
+  test("stream of bands", (){
+    var bands = List<Band>();
+    var completed = false;
+    getStreamedBands().listen((band){
+      bands.add(band);
+    }, onDone: (){
+      completed = true;
+    });
+
+    assert(bands.isNotEmpty);
+    assert(completed);
+  });
 }
