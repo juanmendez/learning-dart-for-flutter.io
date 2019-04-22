@@ -19,7 +19,7 @@ class Band{
  * There are several striking similarities. Unfortunately, Dart's lambdas don't simplify themselves as much
  * as the ones in Kotlin. The story of the Band class is quite the same.
  */
-Future<List<Band>> getBands([bool expectException = false]) {
+Future<List<Band>> getBands([bool expectException = false]) async {
   //async... output is of type Future<List<String>>
 
     var output = new File("./raw/RockBands.csv").readAsLines();
@@ -32,12 +32,13 @@ Future<List<Band>> getBands([bool expectException = false]) {
 
         return lines
                 .skip(1)
-                .map((String line){
+                .map((line){
                     var columns = line.split(",");
                     return new Band( name:columns[0], album:columns[1], year:int.parse(columns[2]));
                 }).toList();
     });
 }
 
-void main(){
+void main() {
+
 }
