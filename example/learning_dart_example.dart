@@ -19,13 +19,13 @@ class Band {
  * There are several striking similarities. Unfortunately, Dart's lambdas don't simplify themselves as much
  * as the ones in Kotlin. The story of the Band class is quite the same.
  */
-Future<List<Band>> getBands([bool expectException = false]) async {
+Future<List<Band>> getBands([bool throwException = false]) async {
   //async... output is of type Future<List<String>>
 
   var output = new File("./raw/RockBands.csv").readAsLines();
 
   return output.then((List<String> lines) {
-    if (expectException) {
+    if (throwException) {
       throw new Exception("you got an exception");
     }
 
@@ -37,28 +37,15 @@ Future<List<Band>> getBands([bool expectException = false]) async {
   });
 }
 
-Future<List<Band>> getAsyncBands([bool expectException = false]) async {
-  //so await is similar to future.then()
-  //with the difference that having several awaits would execute in a linear manner
-  //where as using future.then() multiple times ocurred independently
-  var lines = await File("./raw/RockBands.csv").readAsLines();
-
-  return lines.skip(1).map((line) {
-    var columns = line.split(",");
-    return new Band(
-        name: columns[0], album: columns[1], year: int.parse(columns[2]));
-  }).toList();
-}
-
 Stream<Band> getStreamedBands() async* {
-  var lines = await File("./raw/RockBands.csv").readAsLines();
+  var lines = new File("./raw/RockBands.csv").readAsLinesSync();
+
   var bands = lines.skip(1).map((line) {
     var columns = line.split(",");
-    return Band(name: columns[0], album: columns[1], year: int.parse(columns[2]));
+    return new Band(name: columns[0], album: columns[1], year: int.parse(columns[2]));
   }).toList();
 
   for(var band in bands) {
-    print("band $band");
     yield band;
   }
 }

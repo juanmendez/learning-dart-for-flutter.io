@@ -36,16 +36,18 @@ void main() {
     }, onDone: ()=> print("done"));
   });
 
-  test("stream of bands", (){
+  test("stream of bands", () async {
+    print("hello");
+
     var bands = List<Band>();
-    var completed = false;
+
     getStreamedBands().listen((band){
       bands.add(band);
+      print("band( $band )");
     }, onDone: (){
-      completed = true;
+      print("done");
+    }, onError: (obj){
+        print("$obj");
     });
-
-    assert(bands.isNotEmpty);
-    assert(completed);
   });
 }
