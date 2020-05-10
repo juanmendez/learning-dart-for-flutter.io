@@ -1,0 +1,22 @@
+// how to import
+import 'package:test/test.dart';
+
+// working with two libraries matching the same name
+import 'package:lib1/lib1.dart';
+import 'package:lib2/lib2.dart' as lib2;
+
+// Uses Element from lib1.
+Element element1 = Element();
+
+// Uses Element from lib2.
+lib2.Element element2 = lib2.Element();
+
+// Import only foo.
+import 'package:lib1/lib1.dart' show foo;
+
+// Import all names EXCEPT foo.
+import 'package:lib2/lib2.dart' hide foo;
+
+// there is deferred loading similar to webpack.js, but it only targets web development
+
+
