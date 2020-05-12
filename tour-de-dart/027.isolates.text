@@ -1,0 +1,17 @@
+/***
+ * @watch https://www.youtube.com/watch?v=vl_AaCgudcY
+ * @read https://medium.com/dartlang/dart-asynchronous-programming-isolates-and-event-loops-bffc3e296a6a
+ *
+ * Interesting the Event Loop is a one time processor.
+ * The analogy in the video is a Ferris Wheel, and in the same way a task
+ * jumps in, sits there comfortable and after going one round and finishes landing and exiting.
+ *
+ * It's a FIFO approach, first in, first out.
+ *
+ * The task itself is embedded in an Isolate, so an Isolate can be also
+ * pictured as a passenger-carrying component in the Ferris Wheel.
+ * An Isolate seals the task and waits for it to finish. In order to avoid having to lock/unlock
+ * it when attempted to be run simultaneously.
+ *
+ * This is the foundation of asynchronous programming in Dart and also in Flutter.
+ */
