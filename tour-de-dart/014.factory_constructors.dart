@@ -16,6 +16,7 @@ class Burger {
 
   // this is a shadow constructor, it internally invokes the internal constructor
   // only if, the intended instance is not found under its map by key value
+  // this is a good technique to generate instances through a builder
   factory Burger(String name) {
     return collections.putIfAbsent(name, () => Burger._internal(name));
   }

@@ -14,7 +14,7 @@ void main() async {
 
 Future<String> printVersion() async {
   var version = await checkVersion();
-  return Future.value("hello");
+  return Future.value("hello $version");
 }
 
 Future<String> checkVersion() async {

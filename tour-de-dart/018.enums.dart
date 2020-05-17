@@ -5,6 +5,10 @@ void main() {
 
 }
 
+/**
+ * There are no indications we can use enums as objects with given arguments
+ * which is found in many languages.. Here enums are only empty objects
+ */
 enum Color {
   red, green, blue
 }
