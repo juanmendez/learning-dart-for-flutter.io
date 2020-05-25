@@ -3,6 +3,10 @@ import 'package:learning_dart/src/bandservice.dart';
 import 'package:mockito/mockito.dart';
 import 'package:test/test.dart';
 
+/**
+ * I show how to generate a mocked class quick using live template from Jetbrains
+ * @see https://twitter.com/JuanMendezDev/status/1264742485391298566
+ */
 class MockedBandService extends Mock implements BandService {}
 
 void main() {
