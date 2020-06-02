@@ -8,6 +8,15 @@ import 'package:test/test.dart';
  * @see https://twitter.com/JuanMendezDev/status/1264742485391298566
  */
 class MockedBandService extends Mock implements BandService {}
+class FakeBandService extends Fake implements BandService {
+  @override
+  String tellUsWHoYouAre(String you) => "Bienvenido $you";
+
+  @override
+  Future<List<Band>> getBandsWithFuture([bool expectException = false]) async {
+    return Future.value([]);
+  }
+}
 
 void main() {
   group('A group of tests', () {
@@ -29,9 +38,9 @@ void main() {
     });
 
     test("making use of thenAnswer", () {
-      when(bandService.tellUsWHoYouAre(any)).thenAnswer((args){
+      when(bandService.tellUsWHoYouAre(any)).thenAnswer((args) {
         final name = args.positionalArguments[0];
-          return "welcome $name";
+        return "welcome $name";
       });
 
       expect(bandService.tellUsWHoYouAre("Kotlin"), "welcome Kotlin");
@@ -45,6 +54,28 @@ void main() {
       });
 
       expect(await bandService.getBandsWithFuture(), equals(List<Band>()));
+      verifyNever(bandService.tellUsWHoYouAre(any));
+    });
+
+    test("capturing arguments", () async {
+      when(bandService.tellUsWHoYouAre(captureAny)).thenAnswer((args) {
+        final name = args.positionalArguments[0];
+        return "hello $name";
+      });
+
+      bandService.tellUsWHoYouAre("George Floyd");
+      bandService.tellUsWHoYouAre("R.I.P.");
+
+      var captor = verify(bandService.tellUsWHoYouAre(captureAny)).captured;
+      expect(captor.first, equals("George Floyd"));
+      expect(captor.elementAt(1), equals("R.I.P."));
+      expect(captor, ["George Floyd", "R.I.P."]);
+    });
+
+    test("faking instead of stubbing", () async {
+        final bandService = FakeBandService();
+        expect(bandService.tellUsWHoYouAre("Juan"), "Bienvenido Juan");
+        expect(await bandService.getBandsWithFuture(), equals([]));
     });
   });
 }
