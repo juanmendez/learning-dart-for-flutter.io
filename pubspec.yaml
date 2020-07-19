@@ -1,15 +1,16 @@
 name: learning_dart
 description: A starting point for Dart libraries or applications.
 version: 0.0.1
-#homepage: https://www.example.com
-#author: yjxm188 <email@example.com>
 
 environment:
   sdk: '>=2.8.0'
 
 dependencies:
+  injectable: 1.0.0
   get_it: ^4.0.2
 
 dev_dependencies:
   test: ^1.14.3
   mockito: ^4.1.1
+  build_runner:
+  injectable_generator: 1.0.0
