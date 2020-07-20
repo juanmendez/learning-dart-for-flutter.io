@@ -15,4 +15,4 @@ Another great reason for using this dependency technique is for providing resour
 
 We can run `counter.dart` found under `lib/src`, as well as the testing flavor found in `test/counter_test.dart`.
 In order to generate our code we run `pub run build_runner watch` in our terminal.
-We are also making use in here the mocking library [`Mockito`](https://pub.dev/packages/mockito) which is a counter part in Java/Kotlin. And last but not lease [`get_it`](https://pub.dev/packages/get_it) which is the dependency injection library making this demo possible.
+We are also making use of the mocking library [`Mockito`](https://pub.dev/packages/mockito) which is a counter part in Java/Kotlin. And last but not lease [`get_it`](https://pub.dev/packages/get_it) which is the dependency injection library making this demo possible.
