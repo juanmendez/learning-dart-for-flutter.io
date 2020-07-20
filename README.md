@@ -9,7 +9,7 @@ This is what [Duck Typing](https://en.wikipedia.org/wiki/Duck_typing) is about.
 
 The reason behind applying an abstract class corresponds with `LSP: The Liskov Substitution Principle`. 
 Which implies `"To build forward systems from interchangeable parts, those parts must adhere to a contract that allows those parts to be substituted one for another."`.
-I am very grateful for this principle which is a great way to deal with third party libraries and allowing to replace them by others as well. Following this principle we make our applications being very independent from third party libraries as the rest of our application is very agnostic of what libarry we are using.
+I am very grateful for this principle which is a great way to deal with third party libraries and allowing to replace them by others as well. Following this principle we make our applications being very independent from third party libraries as the rest of our application is very agnostic of what library we are using.
 
 Another great reason for using this dependency technique is for providing resources which can be different for development and production.
 
